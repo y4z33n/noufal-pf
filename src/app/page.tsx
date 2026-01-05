@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import Image from "next/image";
 
 const uniqueImages = [
   '/behance/064e6e167067379.6422f924671b3.jpg',
@@ -24,15 +25,15 @@ const uniqueImages = [
   '/behance/Snapinst.app_464072533_1079769143103749_3125996705337578430_n_1080.jpg'
 ];
 
+// Generate 60 images by repeating the array
+const displayImages: string[] = [];
+while (displayImages.length < 60) {
+  displayImages.push(...uniqueImages);
+}
+const finalImages = displayImages.slice(0, 60);
+
 export default function Home() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  
-  // Generate 60 images by repeating the array
-  const displayImages: string[] = [];
-  while (displayImages.length < 60) {
-    displayImages.push(...uniqueImages);
-  }
-  const finalImages = displayImages.slice(0, 60);
 
   return (
     <main className="min-h-screen flex flex-col items-center relative">
@@ -54,10 +55,12 @@ export default function Home() {
             className="image-grid-item"
             onClick={() => setSelectedImage(src)}
           >
-            <img
+            <Image
               src={src}
               alt={`Portfolio image ${i + 1}`}
               className="image-grid-img"
+              width={300}
+              height={300}
             />
           </div>
         ))}
@@ -82,10 +85,12 @@ export default function Home() {
               ✕
             </button>
             <div className="modal-image-wrapper">
-              <img
+              <Image
                 src={selectedImage}
                 alt="Selected image"
                 className="modal-image"
+                width={800}
+                height={600}
               />
             </div>
           </div>

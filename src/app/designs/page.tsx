@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import Image from "next/image";
 
 const worksImages = [
   '/behance/33c5a1167067379.654c8bad50703.jpg',
@@ -39,7 +40,7 @@ export default function Designs() {
       <section className="works-featured px-8 pb-8">
         {featuredImages.map((src, i) => (
           <div key={i} className="works-featured-item" onClick={() => setSelectedImage(src)}>
-            <img src={src} alt={`Featured work ${i + 1}`} className="works-featured-img" />
+            <Image src={src} alt={`Featured work ${i + 1}`} className="works-featured-img" width={400} height={300} />
           </div>
         ))}
       </section>
@@ -48,7 +49,7 @@ export default function Designs() {
       <section className="works-bottom px-8 pb-24">
         {bottomImages.map((src, i) => (
           <div key={i} className="works-bottom-item" onClick={() => setSelectedImage(src)}>
-            <img src={src} alt={`Work ${i + 1}`} className="works-bottom-img" />
+            <Image src={src} alt={`Work ${i + 1}`} className="works-bottom-img" width={300} height={200} />
           </div>
         ))}
       </section>
@@ -64,7 +65,7 @@ export default function Designs() {
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close" onClick={() => setSelectedImage(null)}>✕</button>
             <div className="modal-image-wrapper">
-              <img src={selectedImage} alt="Selected image" className="modal-image" />
+              <Image src={selectedImage} alt="Selected image" className="modal-image" width={800} height={600} />
             </div>
           </div>
         </div>
