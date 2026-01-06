@@ -14,15 +14,18 @@ export default function Designs() {
 
   const handleVideoHover = (videoSrc: string, isEntering: boolean) => {
     const videoRef = videoRefs.current[videoSrc];
-    if (!videoRef) return;
-
+    
     if (isEntering) {
       setHoveredVideo(videoSrc);
-      videoRef.play().catch(() => {});
+      if (videoRef) {
+        videoRef.play().catch(() => {});
+      }
     } else {
       setHoveredVideo(null);
-      videoRef.pause();
-      videoRef.currentTime = 0;
+      if (videoRef) {
+        videoRef.pause();
+        videoRef.currentTime = 0;
+      }
     }
   };
 
@@ -45,60 +48,82 @@ export default function Designs() {
 
       {/* Featured Videos - Fixed Top Row */}
       <section className="works-featured px-8 pb-8">
-        {featuredVideos.map((src, i) => (
-          <div 
-            key={`featured-${i}`} 
-            className="works-featured-item group"
-            onMouseEnter={() => handleVideoHover(src, true)}
-            onMouseLeave={() => handleVideoHover(src, false)}
-            onClick={(e) => handleVideoClick(e, src)}
-          >
-            <video
-              ref={(el) => {
-                if (el) videoRefs.current[src] = el;
-              }}
-              src={src}
-              className="works-featured-img"
-              muted
-              loop
-              preload="metadata"
-            />
-            {hoveredVideo === src && (
-              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
-                <div className="text-white text-xl">▶</div>
-              </div>
-            )}
-          </div>
-        ))}
+        {featuredVideos.map((src, i) => {
+          const isGoogleDrive = src.includes('drive.google.com');
+          return (
+            <div 
+              key={`featured-${i}`} 
+              className="works-featured-item group"
+              onMouseEnter={() => handleVideoHover(src, true)}
+              onMouseLeave={() => handleVideoHover(src, false)}
+              onClick={(e) => handleVideoClick(e, src)}
+            >
+              {isGoogleDrive ? (
+                <iframe
+                  src={hoveredVideo === src ? `${src}?autoplay=1` : src}
+                  className="works-featured-img"
+                  allow="autoplay"
+                />
+              ) : (
+                <video
+                  ref={(el) => {
+                    if (el) videoRefs.current[src] = el;
+                  }}
+                  src={src}
+                  className="works-featured-img"
+                  muted
+                  loop
+                  preload="metadata"
+                />
+              )}
+              {hoveredVideo === src && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 pointer-events-none">
+                  <div className="text-white text-xl">▶</div>
+                </div>
+              )}
+            </div>
+          );
+        })}
       </section>
 
       {/* Bottom Videos - Scrollable Row */}
       <section className="works-bottom px-8 pb-24">
-        {bottomVideos.map((src, i) => (
-          <div 
-            key={`bottom-${i}`} 
-            className="works-bottom-item group"
-            onMouseEnter={() => handleVideoHover(src, true)}
-            onMouseLeave={() => handleVideoHover(src, false)}
-            onClick={(e) => handleVideoClick(e, src)}
-          >
-            <video
-              ref={(el) => {
-                if (el) videoRefs.current[src] = el;
-              }}
-              src={src}
-              className="works-bottom-img"
-              muted
-              loop
-              preload="metadata"
-            />
-            {hoveredVideo === src && (
-              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
-                <div className="text-white text-lg">▶</div>
-              </div>
-            )}
-          </div>
-        ))}
+        {bottomVideos.map((src, i) => {
+          const isGoogleDrive = src.includes('drive.google.com');
+          return (
+            <div 
+              key={`bottom-${i}`} 
+              className="works-bottom-item group"
+              onMouseEnter={() => handleVideoHover(src, true)}
+              onMouseLeave={() => handleVideoHover(src, false)}
+              onClick={(e) => handleVideoClick(e, src)}
+            >
+              {isGoogleDrive ? (
+                <iframe
+                  src={hoveredVideo === src ? `${src}?autoplay=1` : src}
+                  className="works-bottom-img"
+                  allow="autoplay"
+                />
+              ) : (
+                <video
+                  ref={(el) => {
+                    if (el) videoRefs.current[src] = el;
+                  }}
+                  src={src}
+                  className="works-bottom-img"
+                  muted
+                  loop
+                  preload="metadata"
+                />
+              )}
+              {hoveredVideo === src && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 pointer-events-none">
+                  <div className="text-white text-lg">▶</div>
+                </div>
+              )}
+            </div>
+          );
+        })}
       </section>
 
       {/* Contact Link */}
@@ -120,13 +145,22 @@ export default function Designs() {
               ✕
             </button>
             <div className="modal-image-wrapper">
-              <video
-                src={selectedVideo}
-                className="modal-image"
-                controls
-                autoPlay
-                loop
-              />
+              {selectedVideo.includes('drive.google.com') ? (
+                <iframe
+                  src={`${selectedVideo}?autoplay=1`}
+                  className="modal-image"
+                  allow="autoplay"
+                  style={{ width: '100%', height: '100%', border: 'none' }}
+                />
+              ) : (
+                <video
+                  src={selectedVideo}
+                  className="modal-image"
+                  controls
+                  autoPlay
+                  loop
+                />
+              )}
             </div>
           </div>
         </div>

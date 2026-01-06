@@ -10,7 +10,7 @@ export const videos = {
 };
 
 export const portfolioVideos = [
-  '/portfolio/1.mov',
+  'https://drive.google.com/file/d/12HFOvt6uchWn8h2xhqG--UBql9lz7_P3/preview',
   '/portfolio/2.mp4',
   '/portfolio/3.mov',
   '/portfolio/4(1).mp4',
