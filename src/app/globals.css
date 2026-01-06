@@ -132,8 +132,8 @@ body {
 /* Homepage Styles */
 .homepage-title {
   font-family: 'AvantGarde LT Medium', 'ITC Avant Garde Gothic LT Book', Arial, sans-serif;
-  font-size: 2.5rem;
-  letter-spacing: 0.3em;
+  font-size: 1.75rem;
+  letter-spacing: 0.1em;
   color: #000;
   text-align: center;
   font-weight: 400;
@@ -232,7 +232,7 @@ body {
 /* Works Page - Featured + Scrollable Layout */
 .works-featured {
   display: flex;
-  gap: 16px;
+  gap: 12px;
   max-width: 1200px;
   margin: 0 auto;
   justify-content: center;
@@ -240,8 +240,8 @@ body {
 
 .works-featured-item {
   position: relative;
-  width: 280px;
-  height: 380px;
+  width: 220px;
+  height: 280px;
   cursor: pointer;
   overflow: hidden;
 }
@@ -255,6 +255,14 @@ body {
 
 .works-featured-item:hover .works-featured-img {
   opacity: 0.8;
+}
+
+.works-featured-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.2s ease;
+  display: block;
 }
 
 .works-bottom {
@@ -273,8 +281,8 @@ body {
 
 .works-bottom-item {
   position: relative;
-  min-width: 180px;
-  height: 180px;
+  min-width: 140px;
+  height: 140px;
   cursor: pointer;
   overflow: hidden;
 }
@@ -288,6 +296,14 @@ body {
 
 .works-bottom-item:hover .works-bottom-img {
   opacity: 0.8;
+}
+
+.works-bottom-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.2s ease;
+  display: block;
 }
 
 /* Films Page Styles */
@@ -383,6 +399,10 @@ body {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+}
+
+.modal-image::-webkit-media-controls-panel {
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 /* Responsive */

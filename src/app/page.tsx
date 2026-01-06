@@ -40,7 +40,7 @@ export default function Home() {
       {/* Header */}
       <div className="w-full flex flex-col items-center pt-16 pb-12">
         <h1 className="homepage-title mb-6">NOUFAL SALIH</h1>
-        <nav className="flex gap-12">
+        <nav className="flex gap-24">
           <Link href="/designs" className="nav-link-home">works</Link>
           <Link href="/" className="nav-link-home active">35 mm</Link>
           <Link href="/films" className="nav-link-home">films</Link>
