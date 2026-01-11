@@ -131,9 +131,9 @@ body {
 
 /* Homepage Styles */
 .homepage-title {
-  font-family: 'AvantGarde LT Medium', 'ITC Avant Garde Gothic LT Book', Arial, sans-serif;
-  font-size: 1.75rem;
-  letter-spacing: 0.1em;
+  font-family: 'ITC Avant Garde Gothic LT Book', 'AvantGarde LT Medium', Arial, sans-serif;
+  font-size: 1.25rem;
+  letter-spacing: 0.15em;
   color: #000;
   text-align: center;
   font-weight: 400;
@@ -142,15 +142,16 @@ body {
 .nav-link-home {
   font-family: 'Nimbus Sans L', Arial, sans-serif;
   color: rgba(0, 0, 0, 0.6);
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   text-decoration: none;
-  transition: color 0.2s ease;
-  letter-spacing: 0.05em;
+  transition: color 0.2s ease, font-weight 0.2s ease;
+  letter-spacing: 0.1em;
 }
 
 .nav-link-home:hover,
 .nav-link-home.active {
   color: #000;
+  font-weight: bold;
 }
 
 .image-grid {
@@ -160,6 +161,7 @@ body {
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
+  margin-top: 200px;
   padding: 0 16px;
 }
 
@@ -199,7 +201,7 @@ body {
   max-width: 100%;
   margin: 0 auto;
   padding: 0 310px;
-  margin-bottom: 100px;
+  margin-top: 100px;
 }
 
 .image-grid-item {
@@ -233,23 +235,32 @@ body {
 .works-featured {
   display: flex;
   gap: 12px;
-  max-width: 1200px;
-  margin: 0 auto;
-  justify-content: center;
+  max-width: 1600px;
+  margin-top: 200px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  position: relative;
+  transform: translateZ(0);
+}
+
+.works-featured::-webkit-scrollbar {
+  display: none;
 }
 
 .works-featured-item {
   position: relative;
-  width: 220px;
-  height: 280px;
+  width: 280px;
+  height: 360px;
   cursor: pointer;
   overflow: hidden;
   isolation: isolate;
+  flex-shrink: 0;
 }
 
 .works-featured-item.landscape {
-  width: 500px;
-  height: 280px;
+  width: 640px;
+  height: 360px;
 }
 
 .works-featured-img {
@@ -345,22 +356,39 @@ body {
 /* Films Page Styles */
 .films-container {
   display: flex;
-  gap: 24px;
-  max-width: 1200px;
+  gap: 150px;
+  max-width: 1400px;
   margin: 0 auto;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 120px;
 }
 
 .films-video {
-  width: 450px;
-  height: 253px;
+  width: 480px;
+  height: 270px;
 }
 
 .films-video iframe {
   width: 100%;
   height: 100%;
   border: none;
+}
+
+.contact-link-header {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  font-family: 'Nimbus Sans L', Arial, sans-serif;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.75rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  letter-spacing: 0.1em;
+}
+
+.contact-link-header:hover {
+  color: #000;
 }
 
 .contact-link-fixed {

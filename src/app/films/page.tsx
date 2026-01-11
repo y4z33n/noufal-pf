@@ -5,12 +5,15 @@ export default function Films() {
   return (
     <main className="min-h-screen flex flex-col items-center relative">
       {/* Header */}
-      <div className="w-full flex flex-col items-center pt-16 pb-12">
-        <h1 className="homepage-title mb-6">NOUFAL SALIH</h1>
-        <nav className="flex gap-12">
-          <Link href="/designs" className="nav-link-home">works</Link>
-          <Link href="/" className="nav-link-home">35mm</Link>
-          <Link href="/films" className="nav-link-home active">films</Link>
+      <div className="w-full flex flex-col items-center pt-8 pb-12">
+        <Link href="/contact" className="contact-link-header">
+          CONTACT
+        </Link>
+        <h1 className="homepage-title mb-1">NOUFAL SALIH</h1>
+        <nav className="flex gap-8">
+          <Link href="/designs" className="nav-link-home">WORKS</Link>
+          <Link href="/" className="nav-link-home">35MM</Link>
+          <Link href="/films" className="nav-link-home active">FILMS</Link>
         </nav>
       </div>
 
@@ -37,11 +40,6 @@ export default function Films() {
           ></iframe>
         </div>
       </section>
-
-      {/* Contact Link */}
-      <Link href="/contact" className="contact-link-fixed">
-        contact
-      </Link>
     </main>
   );
 } 
