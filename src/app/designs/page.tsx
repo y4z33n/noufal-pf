@@ -15,9 +15,9 @@ export default function Designs() {
   const featuredVideos = Array(12).fill(videoUrlStatic);
 
   return (
-    <main className="min-h-screen flex flex-col items-center relative">
+    <main className="min-h-screen flex flex-col items-center relative" style={{ height: '100vh', overflow: 'hidden' }}>
       {/* Header */}
-      <div className="w-full flex flex-col items-center pt-8 pb-12">
+      <div className="w-full flex flex-col items-center pt-8 pb-12" style={{ flexShrink: 0 }}>
         <Link href="/contact" className="contact-link-header">
           CONTACT
         </Link>
