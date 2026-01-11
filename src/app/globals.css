@@ -161,7 +161,7 @@ body {
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
-  margin-top: 200px !important;
+  margin-top: calc(100vh - 80vh);
   padding: 0 16px;
 }
 
@@ -201,7 +201,8 @@ body {
   max-width: 100%;
   margin: 0 auto;
   padding: 0 310px;
-  margin-top: 100px;
+  margin-top: calc(100vh - 85vh);
+  padding-top: 2rem;
 }
 
 .image-grid-item {
@@ -235,9 +236,10 @@ body {
 .works-featured {
   display: flex;
   gap: 12px;
-  max-width: 1600px;
+  max-width: 2000px;
   margin: 0 auto;
-  margin-top: 200px !important;
+  margin-top: calc(100vh - 80vh);
+  padding-top: 2rem;
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -251,8 +253,8 @@ body {
 
 .works-featured-item {
   position: relative;
-  width: 280px;
-  height: 360px;
+  width: 320px;
+  height: 420px;
   cursor: pointer;
   overflow: hidden;
   isolation: isolate;
@@ -260,8 +262,8 @@ body {
 }
 
 .works-featured-item.landscape {
-  width: 640px;
-  height: 360px;
+  width: 720px;
+  height: 420px;
 }
 
 .works-featured-img {
@@ -362,7 +364,8 @@ body {
   margin: 0 auto;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 200px !important;
+  margin-top: calc(100vh - 80vh);
+  padding-top: 2rem;
 }
 
 .films-video {
