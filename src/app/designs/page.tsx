@@ -3,16 +3,167 @@
 import Link from "next/link";
 import { useState } from "react";
 
-// Video URLs
-const videoUrlStatic = 'https://iframe.mediadelivery.net/embed/576655/ea8c01e9-54d6-4a6a-8345-3e452fd63ab4?autoplay=false&loop=true&muted=true&preload=true&responsive=true';
-const videoUrlAutoplay = 'https://iframe.mediadelivery.net/embed/576655/ea8c01e9-54d6-4a6a-8345-3e452fd63ab4?autoplay=true&loop=true&muted=true&preload=true&responsive=true';
-const videoUrlWithSound = 'https://iframe.mediadelivery.net/embed/576655/ea8c01e9-54d6-4a6a-8345-3e452fd63ab4?autoplay=true&loop=true&muted=false&preload=true&responsive=true';
+// Video data
+const videos = [
+  {
+    id: 'ea8c01e9-54d6-4a6a-8345-3e452fd63ab4',
+    type: 'portrait'
+  },
+  {
+    id: 'aa2eea88-131f-4d74-ab93-ce9d24f6682a',
+    type: 'landscape'
+  },
+  {
+    id: 'ad67e96a-2442-4106-8d2b-ed668bc42bda',
+    type: 'portrait'
+  },
+  {
+    id: 'a7cd827c-5ba8-4a0e-be0c-162a176b053e',
+    type: 'portrait'
+  },
+  {
+    id: '876ab646-5f78-49d9-a651-aed22d228ca7',
+    type: 'portrait'
+  },
+  {
+    id: 'fa617c93-1a8b-4d3a-99fc-b3fb5825fa88',
+    type: 'portrait'
+  },
+  {
+    id: 'bedd908f-f2cb-403e-bd92-5e0d51b63b06',
+    type: 'portrait'
+  },
+  {
+    id: '3c44bf44-c72e-4575-a74a-76384ceb6c85',
+    type: 'portrait'
+  },
+  {
+    id: '3a37a106-4940-4066-ba56-88cc72e9f992',
+    type: 'portrait'
+  },
+  {
+    id: '3f2e4a5c-ae7d-4a53-9b59-af04f9465628',
+    type: 'portrait'
+  },
+  {
+    id: '9691977b-51b5-4d18-a57b-4b1c7a954d5f',
+    type: 'portrait'
+  },
+  {
+    id: '5d134bc9-fa31-4d19-b63c-fcab547c88cc',
+    type: 'portrait'
+  },
+  {
+    id: '19ecfb56-b490-4137-93f6-9e3a2c0bb743',
+    type: 'portrait'
+  },
+  {
+    id: 'b044b02b-f631-41d4-b82a-b663e8f4c20a',
+    type: 'portrait'
+  },
+  {
+    id: '00eeb6e9-f514-4bda-bad1-eb127cdc7d43',
+    type: 'portrait'
+  },
+  {
+    id: '902cd050-a06f-44e8-89a7-e174ae507d24',
+    type: 'portrait'
+  },
+  {
+    id: '38417ebd-74f7-45a1-bee4-81341065dc4e',
+    type: 'portrait'
+  },
+  {
+    id: '5bf5e8e0-ac7c-412a-a548-1ead7833dd9a',
+    type: 'portrait'
+  },
+  {
+    id: '3488c33e-0108-45b8-949b-6f344e554b3d',
+    type: 'portrait'
+  },
+  {
+    id: '8cef27ab-fcb9-47ef-9faf-42730d9076d6',
+    type: 'portrait'
+  },
+  {
+    id: 'a42d906d-9371-4e9b-b01b-b9668726ea4a',
+    type: 'portrait'
+  },
+  {
+    id: '8db892d7-aacb-4043-8013-41e8cfcd1eb3',
+    type: 'portrait'
+  },
+  {
+    id: '7bdd6539-fbc6-4a8f-bd2b-55397d5a4a9b',
+    type: 'portrait'
+  },
+  {
+    id: 'a5ea7c5d-c28e-4ef6-8065-105f8abe3572',
+    type: 'portrait'
+  },
+  {
+    id: '5755db70-7c33-45e6-9791-b01aa9a67e50',
+    type: 'portrait'
+  },
+  {
+    id: 'ecd1958a-756e-45f5-9245-075823dbda1a',
+    type: 'portrait'
+  },
+  {
+    id: 'bc979929-d811-4aa2-89e2-761adecf1340',
+    type: 'portrait'
+  },
+  {
+    id: '99b0fa76-187d-475f-85d8-72acc574bb65',
+    type: 'portrait'
+  },
+  {
+    id: '2dc02a96-1722-4584-bca4-a1906b913084',
+    type: 'portrait'
+  },
+  {
+    id: '4829d392-7310-4e66-a154-d339fa7f2579',
+    type: 'portrait'
+  },
+  {
+    id: '54ea5ee4-fcbf-4060-8258-79f10f8ee078',
+    type: 'portrait'
+  },
+  {
+    id: 'dbfd544f-fdb3-48f6-bf4c-0f588f66e453',
+    type: 'portrait'
+  },
+  {
+    id: '625cf0e5-44bf-45c6-8942-2a3fb0b72796',
+    type: 'portrait'
+  },
+  {
+    id: 'c0e0ebce-91b1-4538-ae43-d9c6678fd781',
+    type: 'portrait'
+  },
+  {
+    id: '573d7ddf-95be-4094-83ad-4e4bc9601a45',
+    type: 'portrait'
+  },
+  {
+    id: '4aaecf03-c7a4-46ee-9695-ff7bd6cba0ef',
+    type: 'portrait'
+  },
+  {
+    id: '1da323ea-d89a-4c36-aa28-f9f9b8d812bf',
+    type: 'portrait'
+  }
+];
+
+// Function to generate URL
+const generateUrl = (id: string, autoplay: boolean, muted: boolean) => 
+  `https://iframe.mediadelivery.net/embed/576655/${id}?autoplay=${autoplay}&loop=true&muted=${muted}&preload=true&responsive=true`;
 
 export default function Designs() {
-  const [selectedVideo, setSelectedVideo] = useState<boolean>(false);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  const featuredVideos = Array(12).fill(videoUrlStatic);
+  const featuredVideos = videos;
 
   return (
     <main className="min-h-screen flex flex-col items-center relative" style={{ height: '100vh', overflow: 'hidden' }}>
@@ -31,17 +182,17 @@ export default function Designs() {
 
       {/* Videos - Scrollable Row */}
       <section className="works-featured">
-        {featuredVideos.map((_, i) => (
+        {featuredVideos.map((video, i) => (
           <div 
             key={`featured-${i}`} 
-            className={`works-featured-item group ${i === 1 ? 'landscape' : ''}`}
-            onClick={() => setSelectedVideo(true)}
+            className={`works-featured-item group ${video.type === 'landscape' ? 'landscape' : ''}`}
+            onClick={() => setSelectedIndex(i)}
             onMouseEnter={() => setHoveredIndex(i)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
             <iframe
               key={`featured-iframe-${i}`}
-              src={hoveredIndex === i ? videoUrlAutoplay : videoUrlStatic}
+              src={generateUrl(video.id, hoveredIndex === i, true)}
               loading="lazy"
               allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
               allowFullScreen
@@ -51,21 +202,21 @@ export default function Designs() {
       </section>
 
       {/* Video Modal */}
-      {selectedVideo && (
+      {selectedIndex !== null && (
         <div 
           className="modal-overlay"
-          onClick={() => setSelectedVideo(false)}
+          onClick={() => setSelectedIndex(null)}
         >
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <button 
               className="modal-close"
-              onClick={() => setSelectedVideo(false)}
+              onClick={() => setSelectedIndex(null)}
             >
               ✕
             </button>
             <div className="modal-video-wrapper">
               <iframe
-                src={videoUrlWithSound}
+                src={generateUrl(videos[selectedIndex!].id, true, false)}
                 className="modal-video"
                 loading="lazy"
                 style={{
