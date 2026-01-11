@@ -163,6 +163,7 @@ body {
   margin: 0 auto;
   margin-top: calc(100vh - 80vh);
   padding: 0 16px;
+  padding-top: 2rem;
 }
 
 .image-grid-item {
