@@ -30,7 +30,7 @@ export default function Designs() {
       </div>
 
       {/* Videos - Scrollable Row */}
-      <section className="works-featured px-8 pb-24">
+      <section className="works-featured">
         {featuredVideos.map((_, i) => (
           <div 
             key={`featured-${i}`} 

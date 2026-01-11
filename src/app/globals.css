@@ -239,8 +239,8 @@ body {
   gap: 12px;
   max-width: 1600px;
   margin: 0 auto;
-  margin-top: calc(100vh - 70vh);
-  padding-top: 2rem;
+  margin-top: calc(100vh - 420px);
+  padding-left: 0;
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
